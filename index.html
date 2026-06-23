@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Baby ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Comic Sans MS', cursive;
+}
+
+body{
+    background:linear-gradient(135deg,#ffd6e7,#fff0f6);
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    width:100vw;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.active{
+    display:flex;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 0 20px rgba(0,0,0,.15);
+    max-width:850px;
+    max-height:90vh;
+    overflow:auto;
+}
+
+h1{
+    color:#ff4f87;
+    margin-bottom:15px;
+}
+
+p{
+    font-size:18px;
+    color:#555;
+    line-height:1.8;
+}
+
+button{
+    padding:12px 25px;
+    margin:8px;
+    border:none;
+    border-radius:20px;
+    background:#ff6fa5;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff4f87;
+}
+
+input{
+    padding:12px;
+    border-radius:15px;
+    border:2px solid pink;
+    width:280px;
+    text-align:center;
+    font-size:16px;
+}
+
+#gameArea{
+    width:600px;
+    height:350px;
+    border:3px dashed pink;
+    border-radius:20px;
+    background:white;
+    position:relative;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.gameHeart{
+    position:absolute;
+    font-size:35px;
+    cursor:pointer;
+}
+
+.gift{
+    font-size:150px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.gift:hover{
+    transform:scale(1.1);
+}
+
+.heart{
+    position:absolute;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-100px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+<div class="card">
+<h1>💌 Hello Baby! 💌</h1>
+
+<p>
+You got a mail!
+</p>
+
+<br>
+
+<p>
+Someone prepared a little surprise just for you.
+Complete the challenges to unlock it. ❤️
+</p>
+
+<button onclick="nextPage(2)">
+Open Mail 💖
+</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<div class="card">
+
+<h1>🔐 Secret Password 🔐</h1>
+
+<p>
+Enter our anniversary date.
+</p>
+
+<br>
+
+<input
+type="password"
+id="password"
+
+<br><br>
+
+<button onclick="checkPassword()">
+Unlock ❤️
+</button>
+
+<p id="passMessage"></p>
+
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+<div class="card">
+
+<h1>💖 Catch My Love 💖</h1>
+
+<p>Catch 10 hearts to continue!</p>
+
+<br>
+
+<p>
+Score:
+<span id="score">0</span>/10
+</p>
+
+<div id="gameArea"></div>
+
+</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+<div class="card">
+
+<h1>📝 Question 1</h1>
+
+<p>When did we meet?</p>
+
+<button onclick="checkQ1('A')">A. March 19 2026</button><br>
+<button onclick="checkQ1('B')">B. March 23 2026</button><br>
+<button onclick="checkQ1('C')">C. April 19 2026</button><br>
+<button onclick="checkQ1('D')">D. May 19 2026</button>
+
+<p id="q1msg"></p>
+
+</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+<div class="card">
+
+<h1>📝 Question 2</h1>
+
+<p>What was the first message you sent in Messenger?</p>
+
+<button onclick="checkQ2('A')">A. Hello</button><br>
+<button onclick="checkQ2('B')">B. Hi!</button><br>
+<button onclick="checkQ2('C')">C. Good Morning</button><br>
+<button onclick="checkQ2('D')">D. Kumain ka na?</button>
+
+<p id="q2msg"></p>
+
+</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+<div class="card">
+
+<h1>📝 Question 3</h1>
+
+<p>What was my reply to your first message?</p>
+
+<button onclick="checkQ3('A')">A. Hi</button><br>
+<button onclick="checkQ3('B')">B. Hello!</button><br>
+<button onclick="checkQ3('C')">C. Hey</button><br>
+<button onclick="checkQ3('D')">D. Good Evening</button>
+
+<p id="q3msg"></p>
+
+</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="page7">
+<div class="card">
+
+<h1>📝 Question 4</h1>
+
+<p>When did you confess your feelings?</p>
+
+<button onclick="checkQ4('A')">A. April 20 2026</button><br>
+<button onclick="checkQ4('B')">B. April 23 2026</button><br>
+<button onclick="checkQ4('C')">C. April 25 2026</button><br>
+<button onclick="checkQ4('D')">D. April 30 2026</button>
+
+<p id="q4msg"></p>
+
+</div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page" id="page8">
+<div class="card">
+
+<h1>📝 Question 5</h1>
+
+<p>When was our first kiss?</p>
+
+<button onclick="checkQ5('A')">A. May 20 2026</button><br>
+<button onclick="checkQ5('B')">B. May 21 2026</button><br>
+<button onclick="checkQ5('C')">C. May 22 2026</button><br>
+<button onclick="checkQ5('D')">D. May 23 2026</button>
+
+<p id="q5msg"></p>
+
+</div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page" id="page9">
+<div class="card">
+
+<h1>🎉 Yey! 🎉</h1>
+
+<p>
+You answered them correctly!
+</p>
+
+<br>
+
+<p>
+Because of that, I have a gift for you ❤️
+</p>
+
+<button onclick="nextPage(10)">
+See My Gift 🎁
+</button>
+
+</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page" id="page10">
+<div class="card">
+
+<h1>🎁 Open Your Gift 🎁</h1>
+
+<p>
+Click the gift box to open your surprise.
+</p>
+
+<br>
+
+<div class="gift" onclick="nextPage(11)">
+🎁
+</div>
+
+</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page" id="page11">
+<div class="card">
+
+<h1>❤️ Happy First Monthsary, Baby! ❤️</h1>
+
+<p>
+
+Happy First Monthsary, Baby!
+
+<br><br>
+
+It's funny how Cad, one of the subjects I used to complain about the most, became the reason I met someone so special. I never thought that something I struggled to enjoy would lead me to one of the best things ever happened to me.
+
+<br><br>
+
+I can't help but feel so grateful and lucky because it led me to you.
+
+<br><br>
+
+Being with you has allowed me to experience so many beautiful firsts that i'll always treasure.
+
+<br><br>
+
+Cheers to many more firsts together, more memories, more hugs and kisses, more laughs to share, and more adventures together ahead.
+
+<br><br>
+
+I love you baby.
+
+</p>
+
+</div>
+</div>
+
+<script>
+
+// Floating Hearts
+for(let i=0;i<30;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+heart.style.animationDuration=(4+Math.random()*6)+"s";
+document.body.appendChild(heart);
+}
+
+// Navigation
+function nextPage(page){
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+
+document.getElementById("page"+page)
+.classList.add("active");
+
+if(page===3){
+startGame();
+}
+}
+
+// Password
+function checkPassword(){
+
+let pass=
+document.getElementById("password")
+.value
+.toLowerCase()
+.trim();
+
+if(pass==="may 23 2026"){
+nextPage(3);
+}
+else{
+document.getElementById("passMessage")
+.innerHTML="Wrong password Baby 🥺";
+}
+}
+
+// Heart Game
+let score=0;
+
+function startGame(){
+
+score=0;
+
+document.getElementById("score").innerHTML=score;
+
+let area=document.getElementById("gameArea");
+
+area.innerHTML="";
+
+let interval=setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="gameHeart";
+heart.innerHTML="💖";
+
+heart.style.left=
+Math.random()*(area.clientWidth-50)+"px";
+
+heart.style.top=
+Math.random()*(area.clientHeight-50)+"px";
+
+heart.onclick=function(){
+
+score++;
+
+document.getElementById("score")
+.innerHTML=score;
+
+this.remove();
+
+if(score>=10){
+
+clearInterval(interval);
+
+setTimeout(()=>{
+nextPage(4);
+},500);
+
+}
+};
+
+area.appendChild(heart);
+
+setTimeout(()=>{
+if(heart.parentNode){
+heart.remove();
+}
+},2500);
+
+},700);
+}
+
+// Quiz
+function checkQ1(a){
+if(a==="A"){nextPage(5);}
+else{document.getElementById("q1msg").innerHTML="Try again Baby ❤️";}
+}
+
+function checkQ2(a){
+if(a==="B"){nextPage(6);}
+else{document.getElementById("q2msg").innerHTML="Try again Baby ❤️";}
+}
+
+function checkQ3(a){
+if(a==="B"){nextPage(7);}
+else{document.getElementById("q3msg").innerHTML="Try again Baby ❤️";}
+}
+
+function checkQ4(a){
+if(a==="C"){nextPage(8);}
+else{document.getElementById("q4msg").innerHTML="Try again Baby ❤️";}
+}
+
+function checkQ5(a){
+if(a==="D"){nextPage(9);}
+else{document.getElementById("q5msg").innerHTML="Try again Baby ❤️";}
+}
+
+</script>
+
+</body>
+</html>
